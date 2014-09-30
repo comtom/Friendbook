@@ -1,0 +1,93 @@
+        <!-- profile -->
+        <div class="ui horizontal full page grid segment">
+          <form id="Preferences" action="" enctype="multipart/form-data" method="post" >
+            <div class="ui form stacked segment">
+              <div class="ui stackable two column grid">
+                <div class="ui column" style="max-width:300px; margin:30px;">
+
+                  <div class="picture field">
+                    <div class="ui circular segment">
+                      <img class="ui circular image" src="profile/me-hd.png" alt="" />
+                    </div>
+                    <input type="file" name="picture" accept="image/*" style="display:none;" />
+                  </div>
+
+                </div>
+
+                <div class="ui column">
+                  <div class="field">
+                    <label>Nombre de usuario</label>
+                    <input id="nombre_usuario" name="nombre_usuario" type="text" value="">
+                  </div>
+
+                  <div class="ui two column grid">
+                    <div class="ui column name">
+                      <div class="field">
+                        <label>Nombre</label>
+                        <input id="nombre" name="nombre" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="ui column name">
+                      <div class="field">
+                        <label>Apellido</label>
+                        <input id="apellido" name="apellido" type="text" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ui two column grid">
+                    <div class="ui column name">
+                      <div class="field">
+                        <label>Genero</label>
+                        <div class="ui fluid selection dropdown">
+                          <div class="text">Selecciona</div>
+                          <i class="dropdown icon"></i>
+                          <input type="hidden" name="gender" value="">
+                          <div class="menu">
+                            <div class="item" data-value="0">Prefiero no especificar</div>
+                            <div class="item" data-value="1">Masculino</div>
+                            <div class="item" data-value="2">Femenino</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ui column name">
+                      <div class="date field">
+                        <label>Fecha Nacimiento</label>
+                        <input id="fecha_nacimiento" name="fecha_nacimiento" type="text" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label>Nacionalidad</label>
+                    <div class="ui fluid selection dropdown">
+                      <div class="text">Selecciona tu nacionalidad</div>
+                      <i class="dropdown icon"></i>
+                      <input type="hidden" name="nationality" value="">
+                      <div class="menu">
+                        <div class="item" data-value="1">Argentina</div>
+                        <div class="item" data-value="2">Canada</div>
+                        <div class="item" data-value="3">Chile</div>
+                        <div class="item" data-value="4">England</div>
+                        <div class="item" data-value="5">United States</div>
+                        <div class="item" data-value="6">Uruguay</div>
+                        <div class="item" data-value="7">Mexico</div>
+                        <div class="item" data-value="8">Portugal</div>
+                        <div class="item" data-value="9">Spain</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="email field">
+                    <label>Email</label>
+                    <input id="email" name="email" type="text" value="">
+                  </div>
+
+                  <div class="ui teal right floated submit button">Guardar perfil</div>
+                  <br><br><br>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
