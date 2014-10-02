@@ -42,7 +42,7 @@
           <div class="ui two column fixed grid">
             <div class="eight wide column">
               <div class="ui field" style="margin-left:30px;">
-                <input type="text" placeholder="Nombre de usuario" name="buscar" />
+                <input id="seleccionar-usuario" type="text" placeholder="Nombre de usuario" name="buscar" />
               </div>
             </div>
             <div class="four wide column">
