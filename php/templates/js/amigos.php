@@ -25,11 +25,11 @@ $('#seleccionar-usuario').selectize({
         if (!query.length) return callback();
         $.ajax({
             url: '/ajax/usuarios',
-            type: 'GET',
+            type: 'POST',
             dataType: 'jsonp',
             data: {
                 q: query,
-                page_limit: 10,
+                page_limit: 10
             },
             error: function() {
                 callback();
