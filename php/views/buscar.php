@@ -1,13 +1,15 @@
 <?php
 if (!isset($config['path'])) exit('Por motivos de seguridad, no podes acceder directamente');
 
-$texto = (!empty($_POST['texto'])) ? mysqli_real_escape_string($con, $_POST['texto']): '';
+$busqueda = (!empty($_POST['texto'])) ? mysqli_real_escape_string($con, $_POST['texto']): '';
 $contenido = '';
 
-if ($nombre!='') {
+if ($busqueda!='') {
+  $busqueda = '%'. $busqueda .'%';
+
   $query = "CALL buscarMuro(?);";
   if ($stmt = $con->prepare($query)) {
-    $stmt->bind_param('s', $texto);
+    $stmt->bind_param('s', $busqueda);
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($id, $fecha, $texto, $titulo, $link, $foto, $usuario_id, $usuario, $nombre, $apellido);
@@ -19,9 +21,9 @@ if ($nombre!='') {
         $post->id = $id;
         $post->fecha = fechahoraDisplay($fecha);
         $post->texto = $texto;
-        $post->titulo = $titulo;
-        $post->link = $link;
-        $post->foto = $foto;
+        //$post->titulo = $titulo;
+        //$post->link = $link;
+        //$post->foto = $foto;
         $post->usuario_id = $usuario_id;
         $post->usuario = $usuario;
         $post->nombre = $nombre;
@@ -33,25 +35,32 @@ if ($nombre!='') {
 
     $query = "CALL buscarUsuario(?);";
     if ($stmt = $con->prepare($query)) {
-      $stmt->bind_param('s', $texto);
+      $stmt->bind_param('s', $busqueda);
       $stmt->execute();
       $stmt->store_result();
-      $stmt->bind_result($id, $usuario, $nombre, $apellido);
-      global $usuarios;
-      $usuarios = array();
-      
-      while ($stmt->fetch()) {
-          $usuario = new stdClass();
-          $usuario->id = $id;
-          $usuario->usuario = $usuario;
-          $usuario->nombre = $nombre;
-          $usuario->apellido = $apellido;
+      $stmt->bind_result($id, $usuario, $nombre, $apellido, $genero, $fecha_nacimiento, $nacionalidad, $email);
+      global $amigos;
+      $amigos = array();
 
-          array_push($usuarios, $usuario);
+      while ($stmt->fetch()) {
+          $amigo = new stdClass();
+          $amigo->id = $id;
+          $amigo->usuario = $usuario;
+          $amigo->nombre = $nombre;
+          $amigo->apellido = $apellido;
+          $amigo->genero = getGenero($genero);
+          $amigo->fecha_nacimiento = fechaDisplay($fecha_nacimiento);
+          $amigo->nacionalidad = $nacionalidad;
+          $amigo->email = $email;
+
+          array_push($amigos, $amigo);
       }
       $stmt->close();
 
     $contenido = get_include_contents(template('buscar'));
+    } else {
+      header('location: /500.php');
+    }
   } else {
     header('location: /500.php');
   }

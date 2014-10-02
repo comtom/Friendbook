@@ -114,9 +114,9 @@ include view('solicitudes');
             <i class="users group icon"></i><span class="phone hide"> Amigos</span>
           </a>
           <div class="right menu">
-            <form id="form-buscar" method="post" action="" class="item phone hide">
+            <form id="form-buscar" method="post" action="/buscar" class="item phone hide">
               <div class="ui icon input">
-                <input class="ui search" type="text" placeholder="Buscar...">
+                <input class="ui search" type="text" name="texto" placeholder="Buscar...">
                 <i class="search link icon"></i>
               </div>
             </form>
