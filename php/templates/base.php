@@ -26,6 +26,7 @@ include view('solicitudes');
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/semantic.min.css">
         <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css">
+        <link rel="stylesheet" href="/css/selectize.css">
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
         <style>
         .ui.feed a {
@@ -172,9 +173,8 @@ include view('solicitudes');
         <script src="/js/semantic.js"></script>
         <script src="/js/plugins.js"></script>
         <script src="/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="/js/selectize.min.js"></script>
         <script src="/js/vendor/jquery-address.js"></script>
-
-
         <script>
             $('.ui.dropdown')
               .dropdown()
