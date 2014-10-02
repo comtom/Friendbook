@@ -1,4 +1,5 @@
 <?php
+global $con;
 
 $con = new mysqli(
     $config['dbhost'],

@@ -8,7 +8,7 @@
       <div class="ui column" style="max-width:300px; margin:30px;">
         <div class="picture field">
           <div class="ui circular segment" onclick="$(\'#picture\').click()">
-            <img class="ui circular image" src="perfil/me-hd.png" alt="" />
+            <img class="ui circular image" src="perfil/<?php echo $_SESSION['usrId'] ?>.png" alt="" />
           </div>
           <input type="file" name="picture" id="picture" accept="image/*" style="display:none;" />
         </div>

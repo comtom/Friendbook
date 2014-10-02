@@ -1,3 +1,7 @@
+<?php
+global $config;
+include view('solicitudes');
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -10,10 +14,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- favicon -->
-        <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
         <!-- Social SHARE image -->
-        <link rel="image_src" type="image/jpeg" href="images/share.png">
+        <link rel="image_src" type="image/jpeg" href="/images/share.png">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <meta name="description" content="">
@@ -98,7 +102,7 @@
         <![endif]-->
 
         <div class="ui fixed top inverted purple menu" style="margin:0px;">
-          <img src="images/logo.png" height="36" width="36" style="width:36px; height:36px; margin-right:2px;"/>
+          <img src="/images/logo.png" height="36" width="36" style="width:36px; height:36px; margin-right:2px;"/>
           <a class="<?php if(isset($novedades)) echo 'active' ?> item tab" href="/">
             <i class="inbox icon"></i><span class="phone hide"> Novedades</span>
           </a>
@@ -115,8 +119,18 @@
                 <i class="search link icon"></i>
               </div>
             </form>
-            <div class="ui dropdown item"><i class="bell icon"></i> <div class="floating ui circular red label" style="min-height:1.8em; min-width:2em; top:0em;">6</div>
-
+            <div class="ui dropdown item"><i class="bell icon"></i>
+              <?php if($cant_solicitudes>0){ ?>
+                <div class="floating ui circular red label" style="min-height:1.8em; min-width:2em; top:0em;"><?php echo $cant_solicitudes ?></div>
+              <?php }?>
+              <div class="menu" style="left:-299px;" id="doubleheight">
+                <?php foreach ($solicitudes as $solicitud) { ?>
+                <span class="item"><a href="/perfil/<?php echo $solicitud->usuario_id ?>" title="Ver perfil"><i class="user icon"></a></i><?php echo $solicitud->nombre .' '. $solicitud->apellido ?>
+                  <a href="/aceptar/<?php echo $solicitud->id ?>" class="ui teal floated right button tiny" style="color:#fff !important; margin-left:5px; margin-right:5px;">Aceptar</a>
+                  <a href="/rechazar/<?php echo $solicitud->id ?>" class="ui floated right button tiny" style="margin-left:5px; margin-right:5px;">Rechazar</a>
+                </span>
+                <?php } ?>
+              </div>
             </div>
             <div class="ui dropdown item"><i class="user icon"></i><i class="dropdown icon"></i>
               <div class="menu">
@@ -147,7 +161,7 @@
                     <textarea name="message"></textarea>
                   </div>
                   <div class="ui fluid teal labeled submit feedback icon button">
-                    <i class="icon edit"></i> Send feedback
+                    <i class="icon edit"></i> Enviar comentarios
                   </div>
                 </form>
               </div>

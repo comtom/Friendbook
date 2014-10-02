@@ -33,7 +33,7 @@ if ($usuario!='' and $contrasenia!='') {
 
 $contenido = '<!-- vista login -->
         <div class="ui form segment" style="width:450px; margin:65px auto;">
-          <h1>Ingresa</h1>
+          <h3 style="color:#888;">Entrar en FriendBook</h3>
           <form id="form-login" action="" method="post">
           <div class="field">
             <label>Usuario</label>

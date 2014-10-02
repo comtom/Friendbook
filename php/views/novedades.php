@@ -13,14 +13,27 @@ if ($stmt = $con->prepare($query)) {
     $posts = array();
 
     while ($stmt->fetch()) {
-      array_push($posts, $id, $fecha, $texto, $titulo, $link, $foto, $usuario_id, $usuario, $nombre, $apellido);
+        $post = new stdClass();
+
+        $post->id = $id;
+        $post->fecha = fechahoraDisplay($fecha);
+        $post->texto = $texto;
+        $post->titulo = $titulo;
+        $post->link = $link;
+        $post->foto = $foto;
+        $post->usuario_id = $usuario_id;
+        $post->usuario = $usuario;
+        $post->nombre = $nombre;
+        $post->apellido = $apellido;
+
+        array_push($posts, $post);
     }
 
     $contenido = get_include_contents(template('novedades'));
     $contenido.= get_include_contents(template('cargarmas'));
     $stmt->close();
 } else {
-  header();
+  header('location: /500.php');
 }
 
 $novedades = True;

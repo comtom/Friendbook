@@ -1,6 +1,9 @@
 <?php
 if (!isset($config['path'])) exit('Por motivos de seguridad, no podes acceder directamente');
-
+global $con;
+// ------------------------------------
+// Ruteadores
+// ------------------------------------
 
 function get_include_contents($filename) {
     if (is_file($filename)) {
@@ -19,6 +22,7 @@ function template($nombre) {
     return $config['path'].'/templates/'. $nombre .'.php';
 }
 
+
 function javascript($nombre) {
     global $config;
     return $config['path'].'/templates/js/'. $nombre .'.php';
@@ -28,4 +32,67 @@ function javascript($nombre) {
 function view($nombre) {
     global $config;
     return $config['path'].'/views/'. $nombre .'.php';
+}
+
+
+// ------------------------------------
+// fecha y hora
+// ------------------------------------
+
+function fechahoraDisplay($fecha) {
+  $fecha = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
+  //return $fecha->format('d/m/Y H:i');
+
+  return $fecha->format('D, d M Y H:i');
+}
+
+
+function fechahoraDB($fecha) {
+  $fecha = DateTime::createFromFormat('d/m/Y H:i', $fecha);
+  return $fecha->format('Y-m-d H:i:s');
+}
+
+
+function fechaDisplay($fecha) {
+  $fecha = DateTime::createFromFormat('Y-m-d', $fecha);
+  return @$fecha->format('d/m/Y');
+}
+
+
+function fechaDB($fecha) {
+  $fecha = DateTime::createFromFormat('d/m/Y', $fecha);
+  return $fecha->format('Y-m-d');
+}
+
+
+// ------------------------------------
+// misc
+// ------------------------------------
+
+function getGenero($id) {
+    if ($id==1) {
+        return 'Masculino';
+    } elseif ($id==2) {
+        return 'Femenino';
+    } elseif ($id==3) {
+        return '';
+    } else {
+        return False;
+    }
+}
+
+function getNacionalidad($id) {
+  global $con;
+  $nacionalidad = '';
+  $query = "SELECT nombre FROM Nacionalidad WHERE id=?;";
+  if ($stmt = $con->prepare($query)) {
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($nacionalidad);
+    $stmt->fetch();
+    $stmt->close();
+  }
+
+  return $nacionalidad;
 }

@@ -3,10 +3,14 @@
 global $config;
 $config = array();
 
+// config de Php
+setlocale(LC_ALL, 'es_ES');
+
 // parametros grales
 $config['path'] = '/var/www/php';
 $config['defaultView'] = 'login';
 $config['defaultLoggedView'] = 'novedades';
+
 
 // base de datos
 $config['dbhost']="127.0.0.1";

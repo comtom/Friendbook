@@ -19,20 +19,24 @@ $query = parse_url($_SERVER['REQUEST_URI']);
 if (isset($query['query'])) {
     $view = $query['query'];
 } elseif (isset($query['path'])) {
-    $view = $query['path'];
+    $q = explode('/', $query['path']);
+
+    if (count($q)==1) {
+        $view = $q[2];
+    } else {
+        $view = $q[1];
+    }
 } else {
     $view = '';
 }
 
-$q = explode('/', $query['path']);
-
+global $params;
 $params = array();
-$i = 1;
+$j = 1;
 
-foreach ($q as $parameter) {
-    if ($parameter!=$q[1]) {
-        $params[$i] = $parameter;
-        $i++;
+for ($i=2; $i<=5; $i++) {
+    if (isset($q[$i])){
+        array_push($params, $q[$i]);
     }
 }
 
@@ -48,6 +52,7 @@ if (trim($view)=='' or trim($view)=='/') {
 } else {
     if (!file_exists( view($view) )) {
         // para produccio, hacer include de 404
+        //header('location: /404');
         exit('Error: No se pudo cargar el controlador especificado.');
     } else {
 
