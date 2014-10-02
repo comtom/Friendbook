@@ -53,9 +53,6 @@
         <div class="email field">
           <p><small>Email: </small><?php echo $perfil->email ?></p>
         </div>
-
-        <div class="ui teal right floated button"><i class="ui icon add"></i>Agregar como amigo</div>
-        <br><br><br>
       </div>
     </div>
   </div>

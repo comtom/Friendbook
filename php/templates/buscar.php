@@ -1,10 +1,18 @@
 <?php global $posts ?>
 <?php global $amigos ?>
 <!-- friends -->
+<?php if(count($amigos)>0) { ?>
+<div class="ui full page column grid">
+  <div class="ui column" style="margin-top:20px; margin-bottom:0px;">
+    <div class="ui teal segment">
+      <h2>Usuarios</h2>
+    </div>
+  </div>
+</div>
+<?php } ?>
 <div class="ui full page column grid">
   <div class="ui column">
-    <div class="ui items">
-
+    <div class="ui items" style="max-width:1100px; margin:10px auto;">
     <?php foreach ($amigos as $amigo) { ?>
       <!-- friend -->
       <div class="item">
@@ -13,16 +21,15 @@
           <!--<a class="star ui corner label">
             <i class="star icon"></i>
           </a>-->
-          <a class="star ui corner label" href="/agregar/<?php echo $amigo->id ?>" title="Agregar">
+          <a class="star ui corner label" href="/agregar/<?php echo $amigo->id ?>" title="Agregar a mis amigos">
             <i class="star icon"></i>
           </a>
         </div>
         <div class="content">
-          <div class="name"><?php echo $amigo->nombre .' '. $amigo->apellido .' ('.  $amigo->usuario .')' ?></div>
+          <div class="name"><?php echo $amigo->nombre .' '. $amigo->apellido .'<br>'.  $amigo->usuario .'' ?></div>
           <p class="description">
             Sexo: <?php echo $amigo->genero ?><br>
             Fecha nacimiento: <?php echo $amigo->fecha_nacimiento ?><br><br>
-            <!--<i class="ui users icon"></i><?php echo $amigo->cantidad_amigos ?> Amigos-->
             <a class="ui small floated right labeled teal icon button" href="verperfil/<?php echo $amigo->id ?>"><i class="ui photo icon"></i> Ver Perfil</a>
           </p>
         </div>
@@ -33,6 +40,15 @@
   </div>
 </div>
 
+<?php if(count($posts)>0) { ?>
+<div class="ui full page column grid">
+  <div class="ui column" style="margin-top:20px; margin-bottom:0px;">
+    <div class="ui teal segment">
+      <h2>Publicaciones</h2>
+    </div>
+  </div>
+</div>
+<?php } ?>
 <?php foreach ($posts as $post) { ?>
           <!-- post -->
           <div class="ui full page column grid">
