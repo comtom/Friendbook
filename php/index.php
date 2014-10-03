@@ -52,8 +52,8 @@ if (trim($view)=='' or trim($view)=='/') {
 } else {
     if (!file_exists( view($view) )) {
         // para produccio, hacer include de 404
-        //header('location: /404');
-        exit('Error: No se pudo cargar el controlador especificado.');
+        header('location: /404');
+        //exit('Error: No se pudo cargar el controlador especificado.');
     } else {
 
         // controla sesion
