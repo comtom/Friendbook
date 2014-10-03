@@ -4,48 +4,30 @@
 
 $('.ui.form')
   .form({
-    username: {
-      identifier  : 'username',
+    nombre: {
+      identifier  : 'nombre',
       rules: [
         {
           type   : 'empty',
-          prompt : 'Please enter your username'
+          prompt : 'Por favor, ingresa tu nombre'
         }
       ]
     },
-    language: {
-      identifier  : 'language',
+    apellido: {
+      identifier  : 'apellido',
       rules: [
         {
           type   : 'empty',
-          prompt : 'Please enter a language'
+          prompt : 'Por favor, ingresa tu apellido'
         }
       ]
     },
-    first_name: {
-      identifier  : 'first_name',
+    usuario: {
+      identifier  : 'usuario',
       rules: [
         {
           type   : 'empty',
-          prompt : 'Please type your first name'
-        }
-      ]
-    },
-    last_namef: {
-      identifier : 'last_name',
-      rules: [
-        {
-          type   : 'empty',
-          prompt : 'Please type your last name'
-        }
-      ]
-    },
-    birthday: {
-      identifier : 'birthday',
-      rules: [
-        {
-          type   : 'empty',
-          prompt : 'Please type your last name'
+          prompt : 'Por favor, tipea tu nombre de usuario'
         }
       ]
     },
@@ -54,18 +36,31 @@ $('.ui.form')
       rules: [
         {
           type   : 'empty',
-          prompt : 'Please enter your email'
+          prompt : 'Por favor, ingresa tu email'
+        }
+      ]
+    },
+    clave: {
+      identifier : 'clave',
+      rules: [
+        {
+          type   : 'empty',
+          prompt : 'Por favor, ingresa tu contraseña'
+        }
+      ]
+    },
+    repetirclave: {
+      identifier : 'repetirclave',
+      rules: [
+        {
+          type   : 'empty',
+          prompt : 'Por favor, repite tu contraseña'
         }
       ]
     }
   },
   {
     inline : true,
-    on: 'blur',
-    onSuccess : function(){
-        $('#form-registro').submit();
-        return false;
-    }
-    }
+    on: 'blur'
   })
 ;

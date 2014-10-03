@@ -6,11 +6,11 @@
       <form class="ui form" id="form-publish" action="" method="post">
         <div class="field">
           <label>Enviar a</label>
-          <input type="text" name="usuario_destinatario">
+          <input type="text" id="seleccionar-usuario" name="usuario_destinatario">
         </div>
 
         <div class="field">
-          <textarea name="texto"></textarea>
+          <textarea name="texto" maxlength="1000"></textarea>
         </div>
         <div class="ui teal labeled icon submit button">
           <i class="icon edit"></i> Publicar

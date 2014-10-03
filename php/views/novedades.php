@@ -14,7 +14,6 @@ if ($stmt = $con->prepare($query)) {
 
     while ($stmt->fetch()) {
         $post = new stdClass();
-
         $post->id = $id;
         $post->fecha = fechahoraDisplay($fecha);
         $post->texto = $texto;
@@ -25,7 +24,6 @@ if ($stmt = $con->prepare($query)) {
         $post->usuario = $usuario;
         $post->nombre = $nombre;
         $post->apellido = $apellido;
-
         array_push($posts, $post);
     }
 

@@ -7,8 +7,8 @@
     <div class="ui stackable two column grid">
       <div class="ui column" style="max-width:300px; margin:30px;">
         <div class="picture field">
-          <div class="ui circular segment" onclick="$(\'#picture\').click()">
-            <img class="ui circular image" src="perfil/<?php echo $_SESSION['usrId'] ?>.png" alt="" />
+          <div class="ui circular segment" onclick="$('#picture').click()">
+            <img class="ui circular image" src="perfil/<?php echo $_SESSION['usrId'] ?>.jpg" alt="" />
           </div>
           <input type="file" name="picture" id="picture" accept="image/*" style="display:none;" />
         </div>

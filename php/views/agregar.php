@@ -4,9 +4,8 @@ if (!isset($config['path'])) exit('Por motivos de seguridad, no podes acceder di
 global $params;
 $usuario_id = trim($params[0]);
 
-
 if ($usuario_id!='') {
-    $query = "CALL setSolicitud(?, ?);";
+    $query = "INSERT INTO Amigo(usuario_id, usuario_solicitado) VALUES (?, ?);";
     if ($stmt = $con->prepare($query)) {
         $stmt->bind_param('ii', $_SESSION['usrId'], $usuario_id);
         $stmt->execute();
@@ -15,7 +14,8 @@ if ($usuario_id!='') {
             $stmt->close();
             header('location: /500');
         }
-        $stmt->close();
+
+        @$stmt->close();
         header('location: /amigos');
     } else {
       header('location: /500');

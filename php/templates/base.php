@@ -87,6 +87,7 @@ include view('solicitudes');
           background-color: #F2F6F7;
         }
         </style>
+
     </head>
     <body>
         <!-- outdated browser message -->
@@ -116,7 +117,7 @@ include view('solicitudes');
           <div class="right menu">
             <form id="form-buscar" method="post" action="/buscar" class="item phone hide">
               <div class="ui icon input">
-                <input class="ui search" type="text" name="texto" placeholder="Buscar...">
+                <input class="ui search" type="text" name="texto" placeholder="Buscar..." style="max-width:220px;">
                 <i class="search link icon"></i>
               </div>
             </form>
@@ -176,6 +177,8 @@ include view('solicitudes');
         <script src="/js/selectize.min.js"></script>
         <script src="/js/vendor/jquery-address.js"></script>
         <script>
+
+        // -----
             $('.ui.dropdown')
               .dropdown()
             ;

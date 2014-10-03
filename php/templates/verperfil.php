@@ -1,6 +1,7 @@
 <?php global $perfil ?>
 <!-- view profile -->
 <br>
+<?php if(isset($perfil)){ ?>
 <div class="ui horizontal full page grid segment">
   <div class="ui form piled segment">
     <div class="ui stackable two column grid">
@@ -8,7 +9,7 @@
 
         <div class="picture field">
           <div class="ui circular segment">
-            <img class="ui circular image" src="/perfil/<?php echo $perfil->id ?>.png" alt="" />
+            <img class="ui circular image" src="/perfil/<?php echo $perfil->id ?>.jpg" alt="" />
           </div>
           <input type="file" name="picture" accept="image/*" style="display:none;" />
         </div>
@@ -57,6 +58,21 @@
     </div>
   </div>
 </div>
+<?php } else { ?>
+<div class="ui horizontal page grid ">
+  <div class="ui column stacked segment ">
+    <div class="">
+        <center>
+          <h1>No tienes acceso a este perfil</h1>
+          <p>
+            Para poder ver un perfil de otro usuario, primero debes <a href="/amigos">invitar</a> al usuario.<br>
+            Recuerda que antes de poder ver el perfil, el usuario debe aceptar tu solicitud.
+          </p>
+        </center>
+    </div>
+  </div>
+</div>
+<?php };  ?>
 
 <?php global $posts ?>
 <div style="margin-top:30px;"></div>
@@ -69,7 +85,7 @@
                 <div class="ui two column grid">
                   <div class="ui column" style="max-width:108px;">
                     <div class="ui circular segment" style="padding:5px;">
-                      <img class="ui circular image" src="/perfil/<?php echo $post->usuario_id ?>.png" alt="" style="width:64px; height:64px;" />
+                      <img class="ui circular image" src="/perfil/<?php echo $post->usuario_id ?>.jpg" alt="" style="width:64px; height:64px;" />
                     </div>
                   </div>
                   <div class="ui column" style="margin:0px;">

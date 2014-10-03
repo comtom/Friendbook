@@ -8,7 +8,7 @@
       <!-- friend -->
       <div class="item">
         <div class="image">
-          <img src="/perfil/<?php echo $amigo->id ?>.png">
+          <img src="/perfil/<?php echo $amigo->id ?>.jpg">
           <!--<a class="star ui corner label">
             <i class="star icon"></i>
           </a>-->
@@ -38,15 +38,15 @@
     <h2>Agregar amigos</h2>
     <div class="column">
       <center>
-        <form class="ui form" style="max-width:960px; margin-left:120px;">
+        <form class="ui form" id="form-agregaramigo" action="/agregar" method="post" style="max-width:960px; margin-left:120px;">
           <div class="ui two column fixed grid">
             <div class="eight wide column">
               <div class="ui field" style="margin-left:30px;">
-                <input id="seleccionar-usuario" type="text" placeholder="Nombre de usuario" name="buscar" />
+                <input id="seleccionar-usuario" type="text" placeholder="Nombre de usuario" />
               </div>
             </div>
             <div class="four wide column">
-              <div class="ui labeled teal icon button"><i class="ui add icon"></i> Invitar</div>
+              <div class="ui labeled teal icon invitar submit button"><i class="ui add icon"></i> Invitar</div>
             </div>
           </div>
         </form>

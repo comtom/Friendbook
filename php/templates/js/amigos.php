@@ -1,28 +1,39 @@
+
+$('.invitar.submit.button').click(function(){
+    if ( $('#seleccionar-usuario').val()!='' ){
+        $('#form-agregaramigo').attr('action','/agregar/'+ $('#seleccionar-usuario').val());
+        $('#form-agregaramigo').submit();
+    }
+});
+
 $('#seleccionar-usuario').selectize({
-    valueField: 'title',
-    labelField: 'title',
-    searchField: 'title',
+    valueField: 'id',
+    labelField: 'nombre',
+    searchField: 'nombre',
+    maxItems: 1,
     options: [],
     create: false,
     render: {
         option: function(item, escape) {
-            var actors = [];
-            for (var i = 0, n = item.abridged_cast.length; i < n; i++) {
-                actors.push('<span>' + escape(item.abridged_cast[i].name) + '</span>');
-            }
-
             return '<div>' +
-                '<img src="' + escape(item.posters.thumbnail) + '" alt="">' +
+                '<img src="/perfil/' + escape(item.id) + '.jpg" alt="" style="width:16px;height:16px;margin-right:8px;"> ' +
                 '<span class="title">' +
-                    '<span class="name">' + escape(item.title) + '</span>' +
+                    ' <span class="name">' + escape(item.nombre) + ' </span>' +
                 '</span>' +
-                '<span class="description">' + escape(item.synopsis || 'No synopsis available at this time.') + '</span>' +
-                '<span class="actors">' + (actors.length ? 'Starring ' + actors.join(', ') : 'Actors unavailable') + '</span>' +
+                '<span class="description"> (' + escape(item.usuario) + ')</span>' +
             '</div>';
         }
     },
     load: function(query, callback) {
         if (!query.length) return callback();
+        $.post('/ajax/usuarios', {
+            q: query,
+            page_limit: 10
+        }).done(function(res) {
+            console.log(res.resultado);
+            callback(res.resultado);
+        });
+        /*
         $.ajax({
             url: '/ajax/usuarios',
             type: 'POST',
@@ -35,8 +46,10 @@ $('#seleccionar-usuario').selectize({
                 callback();
             },
             success: function(res) {
-                callback(res.movies);
+                console.log(res.resultado);
+                callback(res.resultado);
             }
         });
+       */
     }
 });

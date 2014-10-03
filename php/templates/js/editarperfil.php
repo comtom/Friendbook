@@ -1,6 +1,4 @@
 
-
-
 $('#fecha_nacimiento').datetimepicker({
 format: 'dd/mm/yyyy',
 autoclose: true,

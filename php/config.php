@@ -24,7 +24,9 @@ $config['dbname']="friendbook";
 // vistas que no requieren login
 $vistasPublicas = array(
     '/login',
+    'login',
     '/registro',
+    'registro',
 );
 
 // autodeteccion del template si hay sesion o no

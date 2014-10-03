@@ -28,6 +28,7 @@ if ($stmt = $con->prepare($query)) {
     }
     $stmt->close();
     $contenido = get_include_contents(template('amigos'));
+    $js = get_include_contents(javascript('amigos'));
 
 } else {
   header('location: /500');

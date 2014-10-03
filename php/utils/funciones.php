@@ -41,9 +41,7 @@ function view($nombre) {
 
 function fechahoraDisplay($fecha) {
   $fecha = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
-  //return $fecha->format('d/m/Y H:i');
-
-  return $fecha->format('D, d M Y H:i');
+  return 'Publicado el '. $fecha->format('d/m/Y') .' a las '. $fecha->format('H:i');
 }
 
 
@@ -79,20 +77,4 @@ function getGenero($id) {
     } else {
         return False;
     }
-}
-
-function getNacionalidad($id) {
-  global $con;
-  $nacionalidad = '';
-  $query = "SELECT nombre FROM Nacionalidad WHERE id=?;";
-  if ($stmt = $con->prepare($query)) {
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($nacionalidad);
-    $stmt->fetch();
-    $stmt->close();
-  }
-
-  return $nacionalidad;
 }

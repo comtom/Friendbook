@@ -13,12 +13,12 @@ $repetirclave = (!empty($_POST['repetirclave'])) ? mysqli_real_escape_string($co
 $terminos = (!empty($_POST['terminos'])) ? mysqli_real_escape_string($con, $_POST['terminos']): '';
 
 if ($nombre!='' and $apellido!='' and $usuario!='' and $clave!='' and $repetirclave!='' and $email!='' and $terminos!='') {
-  // todos los campos completos
   if ($clave==$repetirclave) {
     // contraseña ok
+
     $query = "CALL setUsuario(?, ?, ?, ?, ?, ?, ?, ?);";
     if ($stmt = $con->prepare($query)) {
-      $stmt->bind_param('ssssisis', $usuario, $contrasenia, $nombre, $apellido, $genero, $fecha_nacimiento, $nacionalidad, $email);
+      $stmt->bind_param('ssssisis', $usuario, $clave, $nombre, $apellido, $genero, $fecha_nacimiento, $nacionalidad, $email);
       $stmt->execute();
 
       if ($stmt->affected_rows==1) {
@@ -28,10 +28,13 @@ if ($nombre!='' and $apellido!='' and $usuario!='' and $clave!='' and $repetircl
         $mensajeError = 'Error: Nombre de usuario ya registrado.';
       }
       $stmt->close();
-    
+    }
+
   } else {
     $mensajeError = 'Error: Los campos contraseña y repetir contraseña no coinciden. Deben ser iguales.';
+  }
 } else {
+  // campos vacios
   $mensajeError = 'Error: Debe completar todos los campos requeridos.';
 }
 
