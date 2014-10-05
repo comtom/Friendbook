@@ -24,6 +24,7 @@ if ($comando!='') {
                 while ($stmt->fetch()) {
                     $amigo = new stdClass();
                     $amigo->id = $id;
+                    $amigo->url = getFotoPerfil($id);
                     $amigo->usuario = $usuario;
                     $amigo->nombre = $nombre .' '. $apellido;
 
@@ -46,6 +47,7 @@ if ($comando!='') {
                 while ($stmt->fetch()) {
                     $amigo = new stdClass();
                     $amigo->id = $id;
+                    $amigo->url = getFotoPerfil($id);
                     $amigo->usuario = $usuario;
                     $amigo->nombre = $nombre .' '. $apellido;
 

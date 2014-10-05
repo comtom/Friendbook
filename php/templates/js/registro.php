@@ -49,12 +49,34 @@ $('.ui.form')
         }
       ]
     },
+    terminos: {
+      identifier : 'terminos',
+      rules: [
+        {
+          type   : 'checked',
+          prompt : 'Para crear la cuenta, debes aceptar nuestros términos y condciones'
+        }
+      ]
+    },
+    genero: {
+      identifier : 'genero',
+      rules: [
+        {
+          type   : 'empty',
+          prompt : 'Debes seleccionar tu genero. Puedes seleccionar "Prefiero no informarlo"'
+        }
+      ]
+    },
     repetirclave: {
       identifier : 'repetirclave',
       rules: [
         {
           type   : 'empty',
           prompt : 'Por favor, repite tu contraseña'
+        },
+        {
+          type   : 'is['. $('#clave').val() .']',
+          prompt : 'La contraseña no coincide con su repetición.'
         }
       ]
     }

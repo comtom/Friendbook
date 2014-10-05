@@ -9,7 +9,7 @@
 
         <div class="picture field">
           <div class="ui circular segment">
-            <img class="ui circular image" src="/perfil/<?php echo $perfil->id ?>.jpg" alt="" />
+            <img class="ui circular image" src="<?php echo getFotoPerfil($perfil->id) ?>" alt="" />
           </div>
           <input type="file" name="picture" accept="image/*" style="display:none;" />
         </div>
@@ -85,7 +85,7 @@
                 <div class="ui two column grid">
                   <div class="ui column" style="max-width:108px;">
                     <div class="ui circular segment" style="padding:5px;">
-                      <img class="ui circular image" src="/perfil/<?php echo $post->usuario_id ?>.jpg" alt="" style="width:64px; height:64px;" />
+                      <img class="ui circular image" src="<?php echo getFotoPerfil($post->usuario_id) ?>" alt="" style="width:64px; height:64px;" />
                     </div>
                   </div>
                   <div class="ui column" style="margin:0px;">

@@ -16,7 +16,7 @@ $('#seleccionar-usuario').selectize({
     render: {
         option: function(item, escape) {
             return '<div>' +
-                '<img src="/perfil/' + escape(item.id) + '.jpg" alt="" style="width:16px;height:16px;margin-right:8px;"> ' +
+                '<img src="' + escape(item.url) + '" alt="" style="width:24px;height:24px;margin-right:8px;"> ' +
                 '<span class="title">' +
                     ' <span class="name">' + escape(item.nombre) + ' </span>' +
                 '</span>' +
