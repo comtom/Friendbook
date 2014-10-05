@@ -128,8 +128,9 @@ include view('solicitudes');
               <div class="menu" style="left:-299px;" id="doubleheight">
                 <?php foreach ($solicitudes as $solicitud) { ?>
                 <span class="item"><a href="/perfil/<?php echo $solicitud->usuario_id ?>" title="Ver perfil"><i class="user icon"></a></i><?php echo $solicitud->nombre .' '. $solicitud->apellido ?>
-                  <a href="/aceptar/<?php echo $solicitud->id ?>" class="ui teal floated right button tiny" style="color:#fff !important; margin-left:5px; margin-right:5px;">Aceptar</a>
-                  <a href="/rechazar/<?php echo $solicitud->id ?>" class="ui floated right button tiny" style="margin-left:5px; margin-right:5px;">Rechazar</a>
+
+                  <a href="/rechazar/<?php echo $solicitud->id ?>" class="ui button tiny" style="margin-left:3px; margin-right:3px;">Rechazar</a>
+                  <a href="/aceptar/<?php echo $solicitud->id ?>" class="ui teal button tiny" style="color:#fff !important; margin-left:3px; margin-right:3px;">Aceptar</a>
                 </span>
                 <?php } ?>
               </div>
