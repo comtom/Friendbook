@@ -8,6 +8,7 @@ setlocale(LC_ALL, 'es_ES');
 
 // parametros grales
 $config['path'] = '/var/www/php';
+$config['media'] = '/var/www';
 $config['defaultView'] = 'login';
 $config['defaultLoggedView'] = 'novedades';
 

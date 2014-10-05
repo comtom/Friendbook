@@ -78,3 +78,15 @@ function getGenero($id) {
         return False;
     }
 }
+
+
+function getFotoPerfil($id) {
+  global $config;
+  $imagen = $config['media'] .'/perfil/'. $id .'.jpg';
+
+  if (file_exists($imagen)) {
+    return '/perfil/'. $id .'.jpg';
+  } else {
+    return '/perfil/nopic.png';
+  }
+}

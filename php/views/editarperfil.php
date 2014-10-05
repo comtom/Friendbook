@@ -12,9 +12,42 @@ $email = (!empty($_POST['email'])) ? mysqli_real_escape_string($con, $_POST['ema
 if ($nombre_usuario!='' and $nombre!='' and $apellido!='' and $genero!='' and $fecha_nacimiento!='' and $nacionalidad!='' and $email) {
   // form valido, guarda
 
+
+  if ($_FILES["picture"]["error"]==0) {
+    $path = $config['media']. "/perfil/";
+
+    $img = $_FILES['picture']['tmp_name'];
+    $id = $_SESSION['usrId'];
+
+    if (($img_info = getimagesize($img)) === FALSE) {
+      header('location: /editarperfil');
+    }
+
+    $width = $img_info[0];
+    $height = $img_info[1];
+
+    switch ($img_info[2]) {
+      case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+      case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+      case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+      default : header('location: /editarperfil');
+    }
+
+    $tmp = imagecreatetruecolor(256, 256);
+    imagecopyresampled($tmp, $src, 0, 0, 0, 0, 256, 256, $width, $height);
+
+    $dst = $path .$id.'.jpg';
+    touch($dst);
+    chmod($dst, 0644);
+    imagejpeg($tmp, $dst);
+    chmod($dst, 0644);
+
+    //move_uploaded_file($tmp, "$path.jpg");
+  }
+
   // conversion de formato fecha
-  $fecha_nacimiento = DateTime::createFromFormat('d/m/Y', $fecha_nacimiento);
-  $fecha_nacimiento = $fecha_nacimiento->format('Y-m-d');
+  //$fecha_nacimiento = DateTime::createFromFormat('d/m/Y', $fecha_nacimiento);
+  //$fecha_nacimiento = $fecha_nacimiento->format('Y-m-d');
 
   $query = "UPDATE `Usuario`
         SET
