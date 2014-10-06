@@ -75,7 +75,7 @@ $('.ui.form')
           prompt : 'Por favor, repite tu contraseña'
         },
         {
-          type   : 'is[$("#clave").val()]',
+          type   : 'match[clave]',
           prompt : 'La contraseña no coincide con su repetición.'
         }
       ]
