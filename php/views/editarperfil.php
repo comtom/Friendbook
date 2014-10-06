@@ -46,8 +46,8 @@ if ($nombre_usuario!='' and $nombre!='' and $apellido!='' and $genero!='' and $f
   }
 
   // conversion de formato fecha
-  //$fecha_nacimiento = DateTime::createFromFormat('d/m/Y', $fecha_nacimiento);
-  //$fecha_nacimiento = $fecha_nacimiento->format('Y-m-d');
+  $fecha_nacimiento = DateTime::createFromFormat('d/m/Y', $fecha_nacimiento);
+  $fecha_nacimiento = $fecha_nacimiento->format('Y-m-d');
 
   $query = "UPDATE `Usuario`
         SET
