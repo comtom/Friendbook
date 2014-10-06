@@ -8,7 +8,7 @@
       <!-- friend -->
       <div class="item">
         <div class="image">
-          <img src="/perfil/<?php echo $amigo->id ?>.jpg">
+          <img src="<?php echo getFotoPerfil($amigo->id) ?>">
           <!--<a class="star ui corner label">
             <i class="star icon"></i>
           </a>-->
