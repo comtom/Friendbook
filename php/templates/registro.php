@@ -20,8 +20,8 @@
         <input id="genero" name="genero" type="hidden">
         <div class="menu">
           <div class="item" data-value="0">Prefiero no informarlo</div>
-          <div class="item" data-value="1">Hombre</div>
-          <div class="item" data-value="2">Mujer</div>
+          <div class="item" data-value="1">Masculino</div>
+          <div class="item" data-value="2">Femenino</div>
         </div>
       </div>
     </div>
