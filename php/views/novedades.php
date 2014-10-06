@@ -1,8 +1,6 @@
 <?php
 if (!isset($config['path'])) exit('Por motivos de seguridad, no podes acceder directamente');
 
-$contenido = '';
-
 $query = "CALL getNovedades(?);";
 if ($stmt = $con->prepare($query)) {
     $stmt->bind_param('i', $_SESSION['usrId']);
@@ -26,13 +24,13 @@ if ($stmt = $con->prepare($query)) {
         $post->apellido = $apellido;
         array_push($posts, $post);
     }
+    $stmt->close();
 
+    $novedades = True;
     $contenido = get_include_contents(template('novedades'));
     $contenido.= get_include_contents(template('cargarmas'));
-    $stmt->close();
 } else {
   header('location: /500.php');
 }
 
-$novedades = True;
 include template($_SESSION['template_base']);

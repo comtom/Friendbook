@@ -122,16 +122,18 @@ include view('solicitudes');
               </div>
             </form>
             <div class="ui dropdown item"><i class="bell icon"></i>
-              <?php if($cant_solicitudes>0){ ?>
+              <?php if( !empty($cant_solicitudes) and $cant_solicitudes>0){ ?>
                 <div class="floating ui circular red label" style="min-height:1.8em; min-width:2em; top:0em;"><?php echo $cant_solicitudes ?></div>
               <?php }?>
               <div class="menu" style="left:-299px;" id="doubleheight">
-                <?php foreach ($solicitudes as $solicitud) { ?>
-                <span class="item"><img src="<?php echo getFotoPerfil($solicitud->usuario_id) ?>" alt="" style="height:24px; width:24px; margin-right:5px;">
-                  <span style="display:inline-flex; width:200px !important; overflow:hidden;"><?php echo $solicitud->nombre .' '. $solicitud->apellido ?></span>
-                  <a href="/rechazar/<?php echo $solicitud->id ?>" class="ui button tiny" style="margin-left:3px; margin-right:3px;">Rechazar</a>
-                  <a href="/aceptar/<?php echo $solicitud->id ?>" class="ui teal button tiny" style="color:#fff !important; margin-left:3px;">Aceptar</a>
-                </span>
+                <?php if(!empty($cant_solicitudes)) { ?>
+                  <?php foreach ($solicitudes as $solicitud) { ?>
+                  <span class="item"><img src="<?php echo getFotoPerfil($solicitud->usuario_id) ?>" alt="" style="height:24px; width:24px; margin-right:5px;">
+                    <span style="display:inline-flex; width:200px !important; overflow:hidden;"><?php echo $solicitud->nombre .' '. $solicitud->apellido ?></span>
+                    <a href="/rechazar/<?php echo $solicitud->id ?>" class="ui button tiny" style="margin-left:3px; margin-right:3px;">Rechazar</a>
+                    <a href="/aceptar/<?php echo $solicitud->id ?>" class="ui teal button tiny" style="color:#fff !important; margin-left:3px;">Aceptar</a>
+                  </span>
+                  <?php } ?>
                 <?php } ?>
               </div>
             </div>

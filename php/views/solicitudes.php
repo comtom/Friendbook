@@ -8,8 +8,6 @@ if ($stmt = $con->prepare($query)) {
     $stmt->store_result();
     $stmt->bind_result($id, $usuario_id, $usuario, $nombre, $apellido);
 
-    global $cant_solicitudes;
-    global $solicitudes;
     $cant_solicitudes = 0;
     $solicitudes = array();
 

@@ -63,7 +63,7 @@ $('.ui.form')
       rules: [
         {
           type   : 'empty',
-          prompt : 'Debes seleccionar tu genero. Puedes seleccionar "Prefiero no informarlo"'
+          prompt : 'Debes seleccionar tu genero. Puedes seleccionar Prefiero no informarlo'
         }
       ]
     },
@@ -75,7 +75,7 @@ $('.ui.form')
           prompt : 'Por favor, repite tu contraseña'
         },
         {
-          type   : 'is['. $('#clave').val() .']',
+          type   : 'is[$("#clave").val()]',
           prompt : 'La contraseña no coincide con su repetición.'
         }
       ]
