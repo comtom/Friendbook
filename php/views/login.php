@@ -20,7 +20,11 @@ if ($usuario!='' and $contrasenia!='') {
         $_SESSION['usrNombre'] = $nombre;
         $_SESSION['usrApellido'] = $apellido;
         $_SESSION['usrGenero'] = $genero;
-        $_SESSION['usrFecha_nacimiento'] = $fecha_nacimiento;
+        if ($fecha_nacimiento=='0000-00-00'){
+                $_SESSION['usrFecha_nacimiento']='1990-01-01';
+        } else {
+                $_SESSION['usrFecha_nacimiento'] = $fecha_nacimiento;
+        }
         $_SESSION['usrNacionalidad'] = $nacionalidad;
         $_SESSION['usrEmail'] = $email;
 
