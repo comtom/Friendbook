@@ -17,8 +17,8 @@ $config['defaultLoggedView'] = 'novedades';
 $config['dbhost']="127.0.0.1";
 $config['dbport']=3306;
 $config['dbsocket']="";
-$config['dbuser']="root";
-$config['dbpassword']="2422db50d";
+$config['dbuser']="fbadmin";
+$config['dbpassword']="hackme";
 $config['dbname']="friendbook";
 
 
